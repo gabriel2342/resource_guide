@@ -1,0 +1,10 @@
+<% if can? :read, ServiceProvider.new(team: current_team) %>
+  <%= render 'account/shared/menu/item', {
+    url: main_app.polymorphic_path([:account, current_team, :service_providers]),
+    label: t('service_providers.navigation.label'),
+  } do |p| %>
+    <% p.content_for :icon do %>
+      <i class="<%= t('service_providers.navigation.icon') %>"></i>
+    <% end %>
+  <% end %>
+<% end %>

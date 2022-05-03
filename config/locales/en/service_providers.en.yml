@@ -1,0 +1,139 @@
+en:
+  service_providers: &service_providers
+    label: &label Service Providers
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fal fa-puzzle-piece
+    buttons: &buttons
+      new: Add New Service Provider
+      create: Create Service Provider
+      edit: Edit Service Provider
+      update: Update Service Provider
+      destroy: Remove Service Provider
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{service_provider_name}? This will also remove it's associated data. This can't be undone.
+    fields: &fields
+      id:
+        heading: Service Provider ID
+      municipality_id:
+        heading: Municipality ID
+      name:
+        _: &name Name
+        label: *name
+        heading: *name
+      about:
+        _: &about About
+        label: *about
+        heading: *about
+      street:
+        _: &street Street
+        label: *street
+        heading: *street
+      city:
+        _: &city City
+        label: *city
+        heading: *city
+      state:
+        _: &state State
+        label: *state
+        heading: *state
+      zip:
+        _: &zip Zip
+        label: *zip
+        heading: *zip
+      contact_person:
+        _: &contact_person Contact Person
+        label: *contact_person
+        heading: *contact_person
+      phone:
+        _: &phone Phone
+        label: *phone
+        heading: *phone
+      email:
+        _: &email Email
+        label: *email
+        heading: *email
+      logo:
+        _: &logo Logo
+        label: *logo
+        heading: *logo
+      url:
+        _: &url Url
+        label: *url
+        heading: *url
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Service Providers"
+      index: "List Service Providers"
+      create: "Add a New Service Provider"
+      member_actions: "Actions for an Individual Service Provider"
+      show: "Retrieve a Service Provider"
+      update: "Update a Service Provider"
+      destroy: "Delete a Service Provider"
+      fields: *fields
+    index:
+      section: "%{municipalities_possessive} Service Providers"
+      contexts:
+        municipality:
+          header: Service Providers
+          description: Below is a list of Service Providers that have been added for %{municipality_name}.
+          description_empty: No Service Providers have been added for %{municipality_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{service_provider_name}"
+      header: Service Provider Details
+      description: Below are the details we have for %{service_provider_name}.
+      manage_description: You'll also find options for updating these details or removing %{service_provider_name} from %{municipality_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Service Provider for %{municipality_name}"
+      header: New Service Provider Details
+      description: Please provide the details of the new Service Provider you'd like to add to %{municipality_name}.
+      form: *form
+    edit:
+      section: "%{service_provider_name}"
+      header: Edit Service Provider Details
+      description: You can update the details or settings for %{service_provider_name} below.
+      form: *form
+    notifications:
+      created: Service Provider was successfully created.
+      updated: Service Provider was successfully updated.
+      destroyed: Service Provider was successfully destroyed.
+  account:
+    service_providers: *service_providers
+  activerecord:
+    attributes:
+      service_provider:
+        name: *name
+        about: *about
+        street: *street
+        city: *city
+        state: *state
+        zip: *zip
+        contact_person: *contact_person
+        phone: *phone
+        email: *email
+        logo: *logo
+        url: *url
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at

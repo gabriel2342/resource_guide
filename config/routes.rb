@@ -67,7 +67,9 @@ Rails.application.routes.draw do
         end
 
         resources :organizations do
-          resources :municipalities
+          resources :municipalities do
+            resources :service_providers
+          end
         end
       end
     end

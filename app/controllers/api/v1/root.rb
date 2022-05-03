@@ -3,6 +3,7 @@ class Api::V1::Root < Api::Base
 
   mount Api::V1::OrganizationsEndpoint
   mount Api::V1::MunicipalitiesEndpoint
+  mount Api::V1::ServiceProvidersEndpoint
   # 🚅 super scaffolding will mount new endpoints above this line.
 
   handle_not_found

@@ -1,0 +1,8 @@
+<% service_provider ||= @service_provider %>
+<% municipality ||= @municipality || service_provider&.municipality %>
+<%= render 'account/municipalities/breadcrumbs', municipality: municipality %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, municipality, :service_providers] %>
+<% if service_provider&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: service_provider.label_string, url: [:account, service_provider] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'service_providers' %>

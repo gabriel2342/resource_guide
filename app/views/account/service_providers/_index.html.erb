@@ -1,0 +1,62 @@
+<% municipality = @municipality || @municipality %>
+<% context ||= municipality %>
+<% collection ||= :service_providers %>
+<% hide_actions ||= false %>
+<% hide_back ||= false %>
+
+<%= render 'account/shared/box' do |p| %>
+  <% p.content_for :title, t(".contexts.#{context.class.name.underscore}.header") %>
+  <% p.content_for :description do %>
+    <%= t(".contexts.#{context.class.name.underscore}.description#{"_empty" unless service_providers.any?}") %>
+  <% end %>
+
+  <% p.content_for :table do %>
+    <% if service_providers.any? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t('.fields.name.heading') %></th>
+            <%# 🚅 super scaffolding will insert new field headers above this line. %>
+            <th><%= t('.fields.created_at.heading') %></th>
+            <th class="text-right"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% service_providers.each do |service_provider| %>
+            <% with_attribute_settings object: service_provider do %>
+              <tr data-id="<%= service_provider.id %>">
+                <td><%= render 'shared/attributes/text', attribute: :name, url: [:account, service_provider] %></td>
+                <%# 🚅 super scaffolding will insert new fields above this line. %>
+                <td><%= render 'shared/attributes/date_and_time', attribute: :created_at %></td>
+                <td class="buttons">
+                  <% unless hide_actions %>
+                    <% if can? :edit, service_provider %>
+                      <%= link_to t('.buttons.shorthand.edit'), [:edit, :account, service_provider], class: 'button-secondary button-smaller' %>
+                    <% end %>
+                    <% if can? :destroy, service_provider %>
+                      <%= button_to t('.buttons.shorthand.destroy'), [:account, service_provider], method: :delete, data: { confirm: t('.buttons.confirmations.destroy', model_locales(service_provider)) }, class: 'button-secondary button-smaller' %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+
+  <% p.content_for :actions do %>
+    <% unless hide_actions %>
+      <% if context == municipality %>
+        <% if can? :create, ServiceProvider.new(municipality: municipality) %>
+          <%= link_to t('.buttons.new'), [:new, :account, municipality, :service_provider], class: "#{first_button_primary(:service_provider)} new" %>
+        <% end %>
+      <% end %>
+
+      <% unless hide_back %>
+        <%= link_to t('global.buttons.back'), [:account, context], class: "#{first_button_primary(:service_provider)} back" %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

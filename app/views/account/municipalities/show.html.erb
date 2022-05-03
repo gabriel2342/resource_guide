@@ -23,6 +23,7 @@
       <% end %>
     <% end %>
 
+    <%= render 'account/service_providers/index', service_providers: @municipality.service_providers, hide_back: true %>
     <%# 🚅 super scaffolding will insert new children above this line. %>
   <% end %>
 <% end %>

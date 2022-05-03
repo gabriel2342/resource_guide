@@ -1,12 +1,12 @@
-class Municipality < ApplicationRecord
+class ServiceProvider < ApplicationRecord
   # 🚅 add concerns above.
 
-  belongs_to :organization
+  belongs_to :municipality
   # 🚅 add belongs_to associations above.
-  has_many :service_providers, dependent: :destroy, enable_updates: true
+
   # 🚅 add has_many associations above.
 
-  has_one :team, through: :organization
+  has_one :team, through: :municipality
   # 🚅 add has_one associations above.
 
   # 🚅 add scopes above.
