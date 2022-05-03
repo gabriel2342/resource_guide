@@ -1,0 +1,8 @@
+<% municipality ||= @municipality %>
+<% organization ||= @organization || municipality&.organization %>
+<%= render 'account/organizations/breadcrumbs', organization: organization %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, organization, :municipalities] %>
+<% if municipality&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: municipality.label_string, url: [:account, municipality] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'municipalities' %>

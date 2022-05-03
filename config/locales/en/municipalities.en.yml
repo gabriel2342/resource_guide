@@ -1,0 +1,94 @@
+en:
+  municipalities: &municipalities
+    label: &label Municipalities
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fal fa-puzzle-piece
+    buttons: &buttons
+      new: Add New Municipality
+      create: Create Municipality
+      edit: Edit Municipality
+      update: Update Municipality
+      destroy: Remove Municipality
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{municipality_name}? This will also remove it's associated data. This can't be undone.
+    fields: &fields
+      id:
+        heading: Municipality ID
+      organization_id:
+        heading: Organization ID
+      name:
+        _: &name Name
+        label: *name
+        heading: *name
+      url:
+        _: &url Url
+        label: *url
+        heading: *url
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Municipalities"
+      index: "List Municipalities"
+      create: "Add a New Municipality"
+      member_actions: "Actions for an Individual Municipality"
+      show: "Retrieve a Municipality"
+      update: "Update a Municipality"
+      destroy: "Delete a Municipality"
+      fields: *fields
+    index:
+      section: "%{organizations_possessive} Municipalities"
+      contexts:
+        organization:
+          header: Municipalities
+          description: Below is a list of Municipalities that have been added for %{organization_name}.
+          description_empty: No Municipalities have been added for %{organization_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{municipality_name}"
+      header: Municipality Details
+      description: Below are the details we have for %{municipality_name}.
+      manage_description: You'll also find options for updating these details or removing %{municipality_name} from %{organization_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Municipality for %{organization_name}"
+      header: New Municipality Details
+      description: Please provide the details of the new Municipality you'd like to add to %{organization_name}.
+      form: *form
+    edit:
+      section: "%{municipality_name}"
+      header: Edit Municipality Details
+      description: You can update the details or settings for %{municipality_name} below.
+      form: *form
+    notifications:
+      created: Municipality was successfully created.
+      updated: Municipality was successfully updated.
+      destroyed: Municipality was successfully destroyed.
+  account:
+    municipalities: *municipalities
+  activerecord:
+    attributes:
+      municipality:
+        name: *name
+        url: *url
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at

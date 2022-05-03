@@ -22,6 +22,7 @@
       <% end %>
     <% end %>
 
+    <%= render 'account/municipalities/index', municipalities: @organization.municipalities, hide_back: true %>
     <%# 🚅 super scaffolding will insert new children above this line. %>
   <% end %>
 <% end %>

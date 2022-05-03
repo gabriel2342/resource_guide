@@ -1,12 +1,12 @@
-class Organization < ApplicationRecord
+class Municipality < ApplicationRecord
   # 🚅 add concerns above.
 
-  belongs_to :team
+  belongs_to :organization
   # 🚅 add belongs_to associations above.
 
-  has_many :municipalities, dependent: :destroy, enable_updates: true
   # 🚅 add has_many associations above.
 
+  has_one :team, through: :organization
   # 🚅 add has_one associations above.
 
   # 🚅 add scopes above.
