@@ -1,0 +1,8 @@
+<% hour ||= @hour %>
+<% municipality ||= @municipality || hour&.municipality %>
+<%= render 'account/municipalities/breadcrumbs', municipality: municipality %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, municipality, :service_provider_hours] %>
+<% if hour&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: hour.label_string, url: [:account, hour] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'service_provider/hours' %>

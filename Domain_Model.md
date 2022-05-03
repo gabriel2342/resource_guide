@@ -22,11 +22,12 @@ Municipality
        
             Hour
                 rails g model ServiceProvider::Hour municipality:refereneces name:string
-                bin/super-scaffold crud ServiceProvider::Hour name:text_field 
+                bin/super-scaffold crud ServiceProvider::Hour Municipality,Team name:text_field 
+
     
 
             ServiceProviderHour
-            rails g model service_provider_hour serviceprovider:references hour:references service_provider:references
+            rails g model service_provider_hour hour:references service_provider:references
             
             bin/super-scaffold join-model ServiceProvider::ServiceProviderHour service_provider_id{class_name=ServiceProvider} hour_id{class_name=ServiceProvider::Hour }
 
