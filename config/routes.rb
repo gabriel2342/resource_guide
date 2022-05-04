@@ -69,9 +69,6 @@ Rails.application.routes.draw do
         resources :organizations do
           resources :municipalities do
             resources :service_providers
-            namespace :service_provider do
-              resources :hours
-            end
           end
         end
       end
